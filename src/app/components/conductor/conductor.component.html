@@ -1,0 +1,11 @@
+<div *ngIf="conductors.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let conductor of conductors">
+            ID: {{ conductor.id }} - Nombre: {{ conductor.name }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron conductor.</p>
+</ng-template>
