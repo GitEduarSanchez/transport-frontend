@@ -1,4 +1,4 @@
-export interface Conductor {
+export interface destino {
   id: number;
   name: string;
 }
