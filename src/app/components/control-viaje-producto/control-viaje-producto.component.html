@@ -1,0 +1,11 @@
+<div *ngIf="controlViajeProducto.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let controlViajeProducto of controlViajeProducto">
+            idControlViajeProducto: {{ controlViajeProducto.id}} - idControlViaje: {{ controlViajeProducto.name }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron controlViajeProducto.</p>
+</ng-template>

@@ -1,26 +1,24 @@
-import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
+import { controlViajeProducto } from "./models/controlViajeProductos-model";
+import { controlViajeProductoService } from "./service/control-viaje-producto.service";
+import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { controlViajeProducto } from "../models/controlViajeProducto-model";
-import { controlViajeProductoService } from "../service/control-viaje-producto.service";
-
-
 
 @Component({
   selector: 'app-controlViajeProducto',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
-  templateUrl: './control-viaje-Producto.component.html',
+  templateUrl: './control-viaje-producto.component.html',
   styleUrls: ['./control-viaje-producto.component.css'],
   providers: [controlViajeProductoService],
 })
-export class controlViajeProductoComponent {
+export class ControlViajeProductoComponent {
   controlViajeProducto: controlViajeProducto[] = [];
 
   constructor(private userService: controlViajeProductoService) {}
 
   ngOnInit(): void {
-    this.userService.getcontrolViajeProducto().subscribe(
+    this.userService.getUsers().subscribe(
       (data) => {
         this.controlViajeProducto = data;
       },
