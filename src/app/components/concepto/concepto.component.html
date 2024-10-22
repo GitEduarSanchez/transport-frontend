@@ -1,0 +1,11 @@
+<div *ngIf="concepto.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let concepto of concepto">
+            IdConcepto: {{ concepto.IdConcepto }} - Descripcion: {{ concepto.descripcion }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontro la descripcion.</p>
+</ng-template>
