@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ControlViaje } from './models/controlviaje-model';
+import { ControlViaje } from '../control-viaje/models/controlviaje-model';
 
 @Injectable({
   providedIn: 'root',

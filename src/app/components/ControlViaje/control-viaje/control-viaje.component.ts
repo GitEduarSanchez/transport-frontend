@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ControlViajeService } from '../service/control-viaje.service';
-import { ControlViaje } from '../service/models/controlviaje-model';
+import { ControlViaje } from './models/controlviaje-model';
 
 @Component({
   selector: 'app-controlviaje',
