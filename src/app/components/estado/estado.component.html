@@ -1,0 +1,11 @@
+<div *ngIf="estados.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let estado of estados">
+            ID: {{ estado.id }} - Descripcion: {{ estado.Descripcion }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron conductor.</p>
+</ng-template>
