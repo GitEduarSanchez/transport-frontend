@@ -1,4 +1,4 @@
 export interface destino {
-  id: number;
-  name: string;
+  iddestino: number;
+  descripcion: string;
 }
