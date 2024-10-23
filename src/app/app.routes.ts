@@ -8,4 +8,11 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+  {
+    path: 'concepto',
+    loadChildren: () =>
+      import('./components/concepto/concepto.routes').then(
+        (x) => x.CONCEPTO_ROUTES
+      ),
+  },
 ];
