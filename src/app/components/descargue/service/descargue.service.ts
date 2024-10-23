@@ -11,7 +11,22 @@ export class descargueService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<descargue[]> {
+  getdescargue(): Observable<descargue[]> {
     return this.http.get<descargue[]>(this.apiUrl);
+  }
+  getdescargueById(id: number): Observable<descargue> {
+    return this.http.get<descargue>(`${this.apiUrl}/${id}`);
+  }
+
+  createdescargue(descargue: descargue): Observable<descargue> {
+    return this.http.post<descargue>(this.apiUrl, descargue);
+  }
+
+  updatedescargue(id: number, descargue: descargue): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, descargue);
+  }
+
+  deletedescargue(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

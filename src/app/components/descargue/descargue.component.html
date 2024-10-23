@@ -1,0 +1,31 @@
+<div *ngIf="descargue.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let item of descargue" (click)="selectdescargue(item)">
+            descargue: {{ item.descriocion }}
+            <button (click)="deletedescargue(item.id); $event.stopPropagation()">Eliminar</button>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron descargue.</p>
+</ng-template>
+
+<div *ngIf="selectedDescargue">
+    <h3>Actualizar descargue</h3>
+    <form (ngSubmit)="updatedescargue(selectedDescargue)">
+        <label for="descriocion">descargue:</label>
+        <input id="descriocion" [(ngModel)]="selectedDescargue.descriocion" descriocion="descargue" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar descargue</h3>
+    <form #descargueForm="ngForm" (ngSubmit)="adddescargue(descargueForm.value); descargueForm.resetForm()">
+        <label for="newdescargue">descriocion:</label>
+        <input id="newdescargue" descriocion="descargue" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
