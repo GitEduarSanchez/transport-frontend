@@ -1,1 +1,11 @@
-<p>viaje-origen works!</p>
+<div *ngIf="viajeorigens.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let viajeorigen of viajeorigens">
+            ID: {{ viajeorigen.idcontrolviaje_origen }} - Nombre: {{ viajeorigen.name }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron viajeorigen</p>
+</ng-template>

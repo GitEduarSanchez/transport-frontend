@@ -8,4 +8,11 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+  {
+    path: 'viajeorigen',
+    loadChildren: () =>
+      import('./components/viaje-origen/viaje-origen.routes').then(
+        (x) => x.VIAJEORIGEN_ROUTES
+      ),
+  },
 ];

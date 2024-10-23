@@ -1,4 +1,6 @@
-export interface Conductor {
-  id: number;
-  name: string;
+export interface ViajeOrigen {
+  idcontrolviaje_origen: number;
+  idcontrolviaje: number;
+  idorigen: number;
+  idcuidad: number;
 }
