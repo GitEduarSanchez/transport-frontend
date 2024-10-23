@@ -9,3 +9,22 @@
 <ng-template #noUsers>
     <p>No se encontro la descripcion.</p>
 </ng-template>
+
+<div *ngIf="selectedConcepto">
+    <h3>Actualizar Concepto</h3>
+    <form (ngSubmit)="updateConcepto(selectedConcepto)">
+        <label for="name">Descripcion:</label>
+        <input id="name" [(ngModel)]="selectedConcepto.descripcion" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Concepto</h3>
+    <form #conductorForm="ngForm" (ngSubmit)="addConcepto(conceptoForm.value); conceptoForm.resetForm()">
+        <label for="newName">Descripcion:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>

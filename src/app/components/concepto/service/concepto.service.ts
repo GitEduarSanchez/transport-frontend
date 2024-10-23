@@ -11,7 +11,22 @@ export class ConceptoService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<Concepto[]> {
+  getConcepto(): Observable<Concepto[]> {
     return this.http.get<Concepto[]>(this.apiUrl);
+  }
+  getConceptoById(IdConcepto: number): Observable<Concepto> {
+    return this.http.get<Concepto>(`${this.apiUrl}/${IdConcepto}`);
+  }
+
+  createConcepto(concepto: Concepto): Observable<Concepto> {
+    return this.http.post<Concepto>(this.apiUrl, concepto);
+  }
+
+  updateConcepto(IdConcepto: number, concepto: Concepto): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${IdConcepto}`, concepto);
+  }
+
+  deleteConcepto(IdConcepto: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${IdConcepto}`);
   }
 }
