@@ -1,0 +1,11 @@
+<div **ngIf="destino.length > 0; else noUsers">
+    <ul>
+        <li **ngFor="let destino of destino">
+            ID {{ destino.id }} - nombre:{{destino.name}}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>no se encontraron destinos.</p>
+</ng-template>
