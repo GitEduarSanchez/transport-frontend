@@ -8,4 +8,11 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+  {
+    path: 'descargue',
+    loadChildren: () =>
+      import('./components/descargue/descargue.routes').then(
+        (x) => x.DESCARGUE_ROUTES
+      ),
+  },
 ];
