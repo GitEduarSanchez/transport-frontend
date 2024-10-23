@@ -8,4 +8,11 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+  {
+    path: 'producto',
+    loadChildren: () =>
+      import('./components/producto/producto/producto.routes').then(
+        (x) => x.PRODUCTO_ROUTES
+      ),
+  },
 ];
