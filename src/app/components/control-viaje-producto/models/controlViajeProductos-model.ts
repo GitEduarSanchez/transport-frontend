@@ -1,4 +1,5 @@
 export interface controlViajeProducto {
-  id: number;
-  name: string;
+  idControlViajeProducto: number;
+  idControlViaje: number;
+  idProducto:number;
 }

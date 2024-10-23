@@ -1,7 +1,7 @@
 <div *ngIf="controlViajeProducto.length > 0; else noUsers">
     <ul>
         <li *ngFor="let controlViajeProducto of controlViajeProducto">
-            idControlViajeProducto: {{ controlViajeProducto.id}} - idControlViaje: {{ controlViajeProducto.name }}
+            idControlViajeProducto: {{ controlViajeProducto.idControlViajeProducto}} - idControlViaje: {{ controlViajeProducto.idControlViaje }} - idProducto {{controlViajeProducto.idProducto}}
         </li>
     </ul>
 </div>
