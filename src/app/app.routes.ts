@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: 'estado',
     loadChildren: () =>
-      import('./components/estado/estado.routes').then(
+      import('./components/estado/estado/estado.routes').then(
         (x) => x.ESTADO_ROUTES
       ),
   },
