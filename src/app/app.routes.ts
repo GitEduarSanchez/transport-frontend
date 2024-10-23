@@ -8,4 +8,12 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+
+  {
+    path: 'control-viaje',
+    loadChildren: () =>
+      import('./components/ControlViaje/control-viaje/control-viaje.routes').then(
+        (x) => x.CONTROLVIAJE_ROUTES
+      ),
+  },
 ];

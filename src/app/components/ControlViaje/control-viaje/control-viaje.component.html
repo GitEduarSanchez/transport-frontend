@@ -1,1 +1,11 @@
-<p>control-viaje works!</p>
+<div *ngIf="controlviajes.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let controlviaje of controlviajes">
+            ID: {{ controlviaje.idControlViaje }} - guia: {{ controlviaje.guia }} - IDvehiculoTrailer: {{ controlviaje.idVehiculoTrailer }} - fecha: {{ controlviaje.fecha}}  
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron controlviaje.</p>
+</ng-template>
