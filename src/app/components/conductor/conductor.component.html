@@ -1,11 +1,31 @@
-<div *ngIf="conductors.length > 0; else noUsers">
+<div *ngIf="conductor.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let conductor of conductors">
-            ID: {{ conductor.id }} - Nombre: {{ conductor.name }}
+        <li *ngFor="let item of conductor" (click)="selectConductor(item)">
+            Nombre: {{ item.name }}
+            <button (click)="deleteConductor(item.id); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
 </div>
 
 <ng-template #noUsers>
-    <p>No se encontraron conductor.</p>
+    <p>No se encontraron conductores.</p>
 </ng-template>
+
+<div *ngIf="selectedConductor">
+    <h3>Actualizar Conductor</h3>
+    <form (ngSubmit)="updateConductor(selectedConductor)">
+        <label for="name">Nombre:</label>
+        <input id="name" [(ngModel)]="selectedConductor.name" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Conductor</h3>
+    <form #conductorForm="ngForm" (ngSubmit)="addConductor(conductorForm.value); conductorForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
