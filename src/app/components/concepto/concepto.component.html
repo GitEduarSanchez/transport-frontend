@@ -1,7 +1,8 @@
 <div *ngIf="concepto.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let item of concepto" (click)="selectConcepto(item)">
-            IdConcepto: {{ item.IdConcepto}}
+        <li *ngFor="let item of concepto" (click)="selectConcepto(item) ">
+            
+            Id: {{ item.IdConcepto}}
             Descripcion: {{ item.descripcion }}
             <button (click)="deleteConcepto(item.IdConcepto); $event.stopPropagation()">Eliminar</button>
         </li>

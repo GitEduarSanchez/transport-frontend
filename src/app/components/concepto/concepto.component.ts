@@ -3,7 +3,6 @@ import { Concepto } from './models/concepto-model';
 import { ConceptoService } from './service/concepto.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class ConceptoComponent implements OnInit {
   concepto: Concepto[] = [];
   selectedConcepto: Concepto | null = null;
+  
 
   constructor(private conceptoService: ConceptoService) {}
 
@@ -71,9 +71,11 @@ export class ConceptoComponent implements OnInit {
     );
   }
 
-  selectConcepto(concepto: Concepto): void {
-    this.selectedConcepto = concepto;
+  selectConcepto(concepto: Concepto  ): void {
+    this.selectedConcepto = concepto; 
+    
   }
+  
 
   clearSelection(): void {
     this.selectedConcepto = null;

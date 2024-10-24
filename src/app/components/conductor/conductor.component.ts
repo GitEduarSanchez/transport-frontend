@@ -3,7 +3,6 @@ import { Conductor } from './models/conductor-model';
 import { ConductorService } from './service/conductor.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 @Component({
