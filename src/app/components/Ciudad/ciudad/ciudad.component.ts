@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Ciudad } from '../Models/Ciudad-model';
-import { CiudadService } from '../Service/ciudad.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Ciudad } from '../Models/Ciudad-model';
+import { CiudadService } from '../Service/ciudad.service';
 @Component({
   selector: 'app-Ciudad',
   standalone: true,
