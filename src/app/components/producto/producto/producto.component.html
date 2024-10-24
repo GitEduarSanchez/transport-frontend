@@ -1,1 +1,31 @@
-<p>producto works!</p>
+<div *ngIf="producto.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let item of producto" (click)="selectProducto(item)">
+            Nombre: {{ item.name }}
+            <button (click)="deleteProducto(item.id); $event.stopPropagation()">Eliminar</button>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron productos.</p>
+</ng-template>
+
+<div *ngIf="selectedProducto">
+    <h3>Actualizar Producto</h3>
+    <form (ngSubmit)="updateProducto(selectedProducto)">
+        <label for="name">Nombre:</label>
+        <input id="name" [(ngModel)]="selectedProducto.name" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Producto</h3>
+    <form #productoForm="ngForm" (ngSubmit)="addProducto(productoForm.value); productoForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>

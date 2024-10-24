@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-;
+
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto-models';
 
@@ -12,8 +12,22 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<Producto[]> {
+  getProducto(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.apiUrl);
   }
-}
+  getProductoById(id: number): Observable<Producto> {
+    return this.http.get<Producto>(`${this.apiUrl}/${id}`);
+  }
 
+  createProducto(Producto: Producto): Observable<Producto> {
+    return this.http.post<Producto>(this.apiUrl, Producto);
+  }
+
+  updateProducto(id: number, producto: Producto): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, producto);
+  }
+
+  deleteProducto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}
