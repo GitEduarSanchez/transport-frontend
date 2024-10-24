@@ -18,7 +18,7 @@ export class descargueComponent implements OnInit {
   Descargue: descargue[] = [];
   selectedDescargue: descargue | null = null;
 
-  descargue(private descargueService: descargueService) {}
+  constructor(private descargueService: descargueService) {}
 
   ngOnInit(): void {
     this.getdescargues();
@@ -27,18 +27,18 @@ export class descargueComponent implements OnInit {
   getdescargues(): void {
     this.descargueService.getdescargue().subscribe(
       (data) => {
-        this.descargue = data;
+        this.Descargue = data;
       },
       (error) => {
-        console.error('Error al obtener los conductores:', error);
+        console.error('Error al obtener los descargues:', error);
       }
     );
   }
 
-  adddescargue(descargue: descargue): void {
-    this.descargueService.createdescargue(descargue).subscribe(
-      (newdescargue) => {
-        this.descargue.push(newdescargue);
+  addDescargue(Descargue: descargue): void {
+    this.descargueService.createdescargue(Descargue).subscribe(
+      (newDescargue) => {
+        this.Descargue.push(newDescargue);
       },
       (error) => {
         console.error('Error al agregar el descargue:', error);
@@ -46,12 +46,12 @@ export class descargueComponent implements OnInit {
     );
   }
 
-  updatedescargue(descargue: descargue): void {
-    this.descargueService.updatedescargue(descargue.id, descargue).subscribe(
+  updateDescargue(Descargue: descargue): void {
+    this.descargueService.updatedescargue(Descargue.id, Descargue).subscribe(
       () => {
-        const index = this.descargue.findIndex((c) => c.id === descargue.id);
+        const index = this.Descargue.findIndex((c) => c.id === Descargue.id);
         if (index !== -1) {
-          this.descargue[index] = descargue;
+          this.Descargue[index] = Descargue;
         }
       },
       (error) => {
@@ -60,10 +60,10 @@ export class descargueComponent implements OnInit {
     );
   }
 
-  deletedescargue(id: number): void {
+  deleteDescargue(id: number): void {
     this.descargueService.deletedescargue(id).subscribe(
       () => {
-        this.descargue = this.descargue.filter((c) => c.id !== id);
+        this.Descargue = this.Descargue.filter((c) => c.id !== id);
       },
       (error) => {
         console.error('Error al eliminar el descargue:', error);
@@ -71,11 +71,11 @@ export class descargueComponent implements OnInit {
     );
   }
 
-  selectdescargue(descargue: descargue): void {
-    this.selecteddescargue = descargue;
+  selectDescargue(Descargue: descargue): void {
+    this.selectedDescargue = Descargue;
   }
 
   clearSelection(): void {
-    this.selecteddescargue = null;
+    this.selectedDescargue = null;
   }
 }

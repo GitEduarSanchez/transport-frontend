@@ -1,8 +1,8 @@
-<div *ngIf="descargue.length > 0; else noUsers">
+<div *ngIf="Descargue.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let item of descargue" (click)="selectdescargue(item)">
+        <li *ngFor="let item of Descargue" (click)="selectDescargue(item)">
             descargue: {{ item.descriocion }}
-            <button (click)="deletedescargue(item.id); $event.stopPropagation()">Eliminar</button>
+            <button (click)="deleteDescargue(item.id); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
 </div>
@@ -13,7 +13,7 @@
 
 <div *ngIf="selectedDescargue">
     <h3>Actualizar descargue</h3>
-    <form (ngSubmit)="updatedescargue(selectedDescargue)">
+    <form (ngSubmit)="updateDescargue(selectedDescargue)">
         <label for="descriocion">descargue:</label>
         <input id="descriocion" [(ngModel)]="selectedDescargue.descriocion" descriocion="descargue" required>
         <button type="submit">Actualizar</button>
@@ -23,7 +23,7 @@
 
 <div>
     <h3>Agregar descargue</h3>
-    <form #descargueForm="ngForm" (ngSubmit)="adddescargue(descargueForm.value); descargueForm.resetForm()">
+    <form #descargueForm="ngForm" (ngSubmit)="addDescargue(descargueForm.value); descargueForm.resetForm()">
         <label for="newdescargue">descriocion:</label>
         <input id="newdescargue" descriocion="descargue" ngModel required>
         <button type="submit">Agregar</button>
