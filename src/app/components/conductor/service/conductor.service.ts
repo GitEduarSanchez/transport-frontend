@@ -11,7 +11,22 @@ export class ConductorService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<Conductor[]> {
+  getConductor(): Observable<Conductor[]> {
     return this.http.get<Conductor[]>(this.apiUrl);
+  }
+  getConductorById(id: number): Observable<Conductor> {
+    return this.http.get<Conductor>(`${this.apiUrl}/${id}`);
+  }
+
+  createConductor(conductor: Conductor): Observable<Conductor> {
+    return this.http.post<Conductor>(this.apiUrl, conductor);
+  }
+
+  updateConductor(id: number, conductor: Conductor): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, conductor);
+  }
+
+  deleteConductor(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
