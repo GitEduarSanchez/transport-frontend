@@ -1,4 +1,5 @@
 export interface Producto {
   id: number;
-  name: string;
+  descripcion: string;
+  idunidad_medida: string;
 }

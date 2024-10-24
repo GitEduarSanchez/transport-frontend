@@ -1,7 +1,7 @@
 <div *ngIf="producto.length > 0; else noUsers">
     <ul>
         <li *ngFor="let item of producto" (click)="selectProducto(item)">
-            Nombre: {{ item.name }}
+            Nombre: {{ item.descripcion }}
             <button (click)="deleteProducto(item.id); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
@@ -14,8 +14,8 @@
 <div *ngIf="selectedProducto">
     <h3>Actualizar Producto</h3>
     <form (ngSubmit)="updateProducto(selectedProducto)">
-        <label for="name">Nombre:</label>
-        <input id="name" [(ngModel)]="selectedProducto.name" name="name" required>
+        <label for="name">producto:</label>
+        <input id="name" [(ngModel)]="selectedProducto.descripcion" descripcion="descripcion" required>
         <button type="submit">Actualizar</button>
         <button type="button" (click)="clearSelection()">Cancelar</button>
     </form>
