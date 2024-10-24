@@ -1,11 +1,31 @@
 <div *ngIf="estado.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let estado of estados">
-            ID: {{ estado.id }} - Descripcion: {{ estado.Descripcion }}
+        <li *ngFor="let item of estado" (click)="selectEstado(item)">
+            Nombre: {{ item.name }}
+            <button (click)="deleteEstado(item.id); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
 </div>
 
 <ng-template #noUsers>
-    <p>No se encontraron estado.</p>
+    <p>No se encontraron estados.</p>
 </ng-template>
+
+<div *ngIf="selectedEstado">
+    <h3>Actualizar Estado</h3>
+    <form (ngSubmit)="updateEstado(selectedEstado)">
+        <label for="name">Nombre:</label>
+        <input id="name" [(ngModel)]="selectedEstado.name" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Estado</h3>
+    <form #estadoForm="ngForm" (ngSubmit)="addEstado(estadoForm.value); estadoForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
