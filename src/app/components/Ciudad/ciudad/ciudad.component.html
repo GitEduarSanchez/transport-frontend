@@ -1,1 +1,31 @@
-<p>ciudad works!</p>
+<div *ngIf="Ciudad.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let item of Ciudad" (click)="selectCiudad(item)">
+            Nombre: {{ item.name }}
+            <button (click)="deleteCiudad(item.id); $event.stopPropagation()">Eliminar</button>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron conductores.</p>
+</ng-template>
+
+<div *ngIf="selectedCiudad">
+    <h3>Actualizar Ciudad</h3>
+    <form (ngSubmit)="updateCiudad(selectedCiudad)">
+        <label for="name">Ciudad:</label>
+        <input id="name" [(ngModel)]="selectedCiudad.name" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Ciudad</h3>
+    <form #CiudadForm="ngForm" (ngSubmit)="addCiudad(CiudadForm.value); CiudadForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>

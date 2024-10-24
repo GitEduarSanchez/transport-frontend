@@ -8,4 +8,11 @@ export const routes: Routes = [
         (x) => x.CONDUCTOR_ROUTES
       ),
   },
+  {
+    path: 'Ciudad',
+    loadChildren: () =>
+      import('./components/Ciudad/ciudad/Ciudad.routes').then(
+        (x) => x.CIUDAD_ROUTES
+      ),
+  }
 ];
