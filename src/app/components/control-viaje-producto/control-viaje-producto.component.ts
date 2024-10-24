@@ -2,7 +2,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { controlViajeProducto } from "./models/controlViajeProductos-model";
 import { controlViajeProductoService } from "./service/control-viaje-producto.service";
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-controlViajeProducto',
@@ -12,19 +14,68 @@ import { Component } from "@angular/core";
   styleUrls: ['./control-viaje-producto.component.css'],
   providers: [controlViajeProductoService],
 })
-export class ControlViajeProductoComponent {
+export class controlViajeProductoComponent implements OnInit {
   controlViajeProducto: controlViajeProducto[] = [];
+  selectedcontrolViajeProducto: controlViajeProducto | null = null;
 
-  constructor(private userService: controlViajeProductoService) {}
+  constructor(private controlViajeProductoService: controlViajeProductoService) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(
+    this.getcontrolViajeProducto();
+  }
+
+  getcontrolViajeProducto(): void {
+    this.controlViajeProductoService.getcontrolViajeProducto().subscribe(
       (data) => {
         this.controlViajeProducto = data;
       },
       (error) => {
-        console.error('Error al obtener los usuarios:', error);
+        console.error('Error al obtener los controlViajeProducto:', error);
       }
     );
+  }
+
+  addcontrolViajeProducto(controlViajeProducto: controlViajeProducto): void {
+    this.controlViajeProductoService.createcontrolViajeProducto(controlViajeProducto).subscribe(
+      (newcontrolViajeProducto) => {
+        this.controlViajeProducto.push(newcontrolViajeProducto);
+      },
+      (error) => {
+        console.error('Error al agregar el controlViajeProducto:', error);
+      }
+    );
+  }
+
+  updatecontrolViajeProducto(controlViajeProducto: controlViajeProducto): void {
+    this.controlViajeProductoService.updatecontrolViajeProducto(controlViajeProducto.idControlViajeProducto, controlViajeProducto).subscribe(
+      () => {
+        const index = this.controlViajeProducto.findIndex((c) => c.idControlViajeProducto === controlViajeProducto.idControlViajeProducto);
+        if (index !== -1) {
+          this.controlViajeProducto[index] = controlViajeProducto;
+        }
+      },
+      (error) => {
+        console.error('Error al actualizar el controlViajeProducto:', error);
+      }
+    );
+  }
+
+  deletecontrolViajeProducto(id: number): void {
+    this.controlViajeProductoService.deletecontrolViajeProducto(id).subscribe(
+      () => {
+        this.controlViajeProducto = this.controlViajeProducto.filter((c) => c.idControlViajeProducto !== id);
+      },
+      (error) => {
+        console.error('Error al eliminar el controlViajeProducto:', error);
+      }
+    );
+  }
+
+  selectcontrolViajeProducto(controlViajeProducto: controlViajeProducto): void {
+    this.selectedcontrolViajeProducto = controlViajeProducto;
+  }
+
+  clearSelection(): void {
+    this.selectedcontrolViajeProducto = null;
   }
 }

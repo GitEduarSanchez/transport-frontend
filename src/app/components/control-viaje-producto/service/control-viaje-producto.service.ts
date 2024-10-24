@@ -11,7 +11,23 @@ export class controlViajeProductoService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<controlViajeProducto[]> {
+  getcontrolViajeProducto(): Observable<controlViajeProducto[]> {
     return this.http.get<controlViajeProducto[]>(this.apiUrl);
+  }
+
+  getcontrolViajeProductoById(id: number): Observable<controlViajeProducto> {
+    return this.http.get<controlViajeProducto>(`${this.apiUrl}/${id}`);
+  }
+
+  createcontrolViajeProducto(controlViajeProducto: controlViajeProducto): Observable<controlViajeProducto> {
+    return this.http.post<controlViajeProducto>(this.apiUrl, controlViajeProducto);
+  }
+
+  updatecontrolViajeProducto(id: number, controlViajeProducto: controlViajeProducto): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, controlViajeProducto);
+  }
+
+  deletecontrolViajeProducto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

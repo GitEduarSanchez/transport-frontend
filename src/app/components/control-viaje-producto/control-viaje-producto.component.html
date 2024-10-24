@@ -1,11 +1,33 @@
 <div *ngIf="controlViajeProducto.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let controlViajeProducto of controlViajeProducto">
-            idControlViajeProducto: {{ controlViajeProducto.idControlViajeProducto}} - idControlViaje: {{ controlViajeProducto.idControlViaje }} - idProducto {{controlViajeProducto.idProducto}}
+        <li *ngFor="let item of controlViajeProducto" (click)="selectcontrolViajeProducto(item)">
+            idControlViajeProducto: {{ item.idControlViajeProducto }}
+            idControlViaje: {{ item.idControlViaje }}
+            idProducto: {{ item.idProducto }}
+            <button (click)="deletecontrolViajeProducto(item.idControlViajeProducto); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
 </div>
 
 <ng-template #noUsers>
-    <p>No se encontraron controlViajeProducto.</p>
+    <p>No se encontraron controlViajeProductos.</p>
 </ng-template>
+
+<div *ngIf="selectedcontrolViajeProducto">
+    <h3>Actualizar controlViajeProducto</h3>
+    <form (ngSubmit)="updatecontrolViajeProducto(selectedcontrolViajeProducto)">
+        <label for="name">idControlViajeProducto:</label>
+        <input id="name" [(ngModel)]="selectedcontrolViajeProducto.idControlViajeProducto" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar Conductor</h3>
+    <form #conductorForm="ngForm" (ngSubmit)="addcontrolViajeProducto(controlViajeProductoForm.value); conductorForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
