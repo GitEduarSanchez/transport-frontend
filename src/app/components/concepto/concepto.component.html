@@ -1,7 +1,9 @@
 <div *ngIf="concepto.length > 0; else noUsers">
     <ul>
-        <li *ngFor="let concepto of concepto">
-            IdConcepto: {{ concepto.IdConcepto }} - descripcion: {{ concepto.descripcion }}
+        <li *ngFor="let item of concepto" (click)="selectConcepto(item)">
+            IdConcepto: {{ item.IdConcepto}}
+            Descripcion: {{ item.descripcion }}
+            <button (click)="deleteConcepto(item.IdConcepto); $event.stopPropagation()">Eliminar</button>
         </li>
     </ul>
 </div>
@@ -22,7 +24,7 @@
 
 <div>
     <h3>Agregar Concepto</h3>
-    <form #conductorForm="ngForm" (ngSubmit)="addConcepto(conceptoForm.value); conceptoForm.resetForm()">
+    <form #conceptoForm="ngForm" (ngSubmit)="addConcepto(conceptoForm.value); conceptoForm.resetForm()">
         <label for="newName">Descripcion:</label>
         <input id="newName" name="name" ngModel required>
         <button type="submit">Agregar</button>
