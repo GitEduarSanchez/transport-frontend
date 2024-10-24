@@ -1,1 +1,31 @@
-<p>trailer works!</p>
+<div *ngIf="trailer.length > 0; else noUsers">
+    <ul>
+        <li *ngFor="let item of trailer" (click)="selecttrailer(item)">
+            Nombre: {{ item.name }}
+            <button (click)="delete(item.id); $event.stopPropagation()">Eliminar</button>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noUsers>
+    <p>No se encontraron trailer.</p>
+</ng-template>
+
+<div *ngIf="selectedtrailer">
+    <h3>Actualizar trailer</h3>
+    <form (ngSubmit)="updatetrailer(selectedtrailer)">
+        <label for="name">Nombre:</label>
+        <input id="name" [(ngModel)]="selectedtrailer.name" name="name" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="clearSelection()">Cancelar</button>
+    </form>
+</div>
+
+<div>
+    <h3>Agregar trailer</h3>
+    <form #trailerForm="ngForm" (ngSubmit)="addtrailer(trailerForm.value); trailerForm.resetForm()">
+        <label for="newName">Nombre:</label>
+        <input id="newName" name="name" ngModel required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
